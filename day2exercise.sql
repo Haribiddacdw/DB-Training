@@ -44,16 +44,14 @@ ALTER TABLE EMPLOYEE_TABLE MODIFY COLUMN EMAIL VARCHAR(30);
 
 //QUESTION11
 //11.	Write a SQL query to change the location of Diana to London
--- SELECT * FROM EMPLOYEE_TABLE WHERE FIRST_NAME  = 'Diana';
--- SELECT * FROM LOCATIONS WHERE CITY = 'London';
--- select * from departments;
--- UPDATE EMPLOYEE_TABLE SET LOCATIONS.CITY = 'London'
-update location set SELECT * FROM EMPLOYEE_TABLE 
+
+update locations set city = 'London'
+where location_id = (SELECT * FROM EMPLOYEE_TABLE 
 INNER JOIN DEPARTMENTS ON EMPLOYEE_TABLE.DEPARTMENT_ID = DEPARTMENTS.DEPARTMENT_ID
 INNER JOIN LOCATIONS ON DEPARTMENTS.LOCATION_ID = LOCATIONS.LOCATION_ID WHERE EMPLOYEE_TABLE.FIRST_NAME='Diana'
-;
+);
 
-
+commit;
 
 //QUESTION12
 //12.	Fetch all employees with their first name , email , phone (without extension part) and extension (just the extension)  
